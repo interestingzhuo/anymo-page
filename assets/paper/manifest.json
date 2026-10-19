@@ -1,0 +1,36 @@
+{
+  "paper": "AnyMo: Scaling Any-Modality Conditional Motion Generation with Masked Modeling",
+  "format": "SVG exported from author-provided PDF source figures; vector text and graphics retained; source rasters embedded at native resolution.",
+  "figures": [
+    {
+      "file": "teaser.svg",
+      "figure": "Figure 1",
+      "source_pdf": "AnyMo_arxiv/assets/teaser.pdf",
+      "sha256": "9ee6aa381ce2d001e5df1c8476103962192ed1f1378379690331e1b70c9e3445"
+    },
+    {
+      "file": "data_framework.svg",
+      "figure": "Figure 2",
+      "source_pdf": "AnyMo_arxiv/assets/data_framework.pdf",
+      "sha256": "d05c25fb75e4e7315f9be57bf5602c5ccfa65ac28cd79d055644635fa97fd681"
+    },
+    {
+      "file": "t2m_vis.svg",
+      "figure": "Figure S6",
+      "source_pdf": "AnyMo_arxiv/assets/t2m_vis.pdf",
+      "sha256": "059d36f5ef99f1f7fcae37d63a4725cd4288c894a8f10645881b218f544ee706"
+    },
+    {
+      "file": "vis_dance.svg",
+      "figure": "Figure S7",
+      "source_pdf": "AnyMo_arxiv/assets/vis_dance.pdf",
+      "sha256": "77014675293cb2404928e5706cd8d57b3e09c82c92467ee95847ae0a44330afa"
+    },
+    {
+      "file": "vis_audio.svg",
+      "figure": "Figure S8",
+      "source_pdf": "AnyMo_arxiv/assets/vis_audio.pdf",
+      "sha256": "e3e155330dd66d7f289e9fd373bccf6aa2e8b7f9b90b01c91a4406c644a2cca5"
+    }
+  ]
+}
