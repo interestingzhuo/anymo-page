@@ -6,7 +6,7 @@ window.ANYMO_CONFIG = {
   arxivUrl: "https://arxiv.org/abs/2605.29488",
   datasetUrl: "https://huggingface.co/datasets/L-yiheng/OmniHuMo",
   codeUrl: "",          // Add the actual public repository URL to reveal the Code links.
-  projectUrl: "https://liyiheng23.github.io/anymo-page/",       // Set to the final public project URL for canonical / social metadata.
+  projectUrl: "https://interestingzhuo.github.io/anymo-page/",       // Set to the final public project URL for canonical / social metadata.
   contactEmail: "",     // Optional project contact; hidden until configured.
   authorUrls: {},       // e.g. {"Yiheng Li": "https://your-verified-homepage.example"}
   preferLocalFigures: true, // fetch_assets.py sets this true after all figures are downloaded.

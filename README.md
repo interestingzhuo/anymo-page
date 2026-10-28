@@ -2,7 +2,7 @@
 
 Project website for **AnyMo: Scaling Any-Modality Conditional Motion Generation with Masked Modeling**.
 
-- Website: https://liyiheng23.github.io/anymo-page/
+- Website: https://interestingzhuo.github.io/anymo-page/
 - Paper: https://arxiv.org/abs/2605.29488
 - Dataset: https://huggingface.co/datasets/L-yiheng/OmniHuMo
 
