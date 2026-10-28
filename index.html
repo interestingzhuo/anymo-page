@@ -20,13 +20,11 @@
   <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2605.29488">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="stylesheet" href="styles.css?v=20261019-2">
-  <link rel="stylesheet" href="motion-viewer.css?v=20261028">
-  <link rel="stylesheet" href="dataset-stats.css?v=20261028">
+  <link rel="stylesheet" href="motion-viewer.css?v=20261028-2">
   <script src="config.js" defer></script>
   <script src="app.js?v=20261019-2" defer></script>
-  <script src="assets/data/omnihumo-samples.js?v=20261028" defer></script>
-  <script src="motion-viewer.js?v=20261028" defer></script>
-  <script src="dataset-stats.js?v=20261028" defer></script>
+  <script src="assets/data/omnihumo-samples.js?v=20261028-2" defer></script>
+  <script src="motion-viewer.js?v=20261028-2" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -135,58 +133,9 @@
     </div>
     <noscript><p class="motion-noscript">Enable JavaScript to rotate and play these motion samples. You can also <a href="https://huggingface.co/datasets/L-yiheng/OmniHuMo" target="_blank" rel="noopener">browse the original OmniHuMo dataset on Hugging Face</a>.</p></noscript>
   </div>
-  <p class="motion-provenance">Adapted from <a href="https://huggingface.co/datasets/L-yiheng/OmniHuMo" target="_blank" rel="noopener">OmniHuMo</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> · <a href="assets/data/NOTICE.md">Sample provenance &amp; adaptations</a>. Three examples, not a representative dataset sample.</p>
+  <p class="motion-provenance">Adapted from <a href="https://huggingface.co/datasets/L-yiheng/OmniHuMo" target="_blank" rel="noopener">OmniHuMo</a> · <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> · <a href="assets/data/NOTICE.md">Sample provenance &amp; adaptations</a>. Illustrative examples, not a representative dataset sample.</p>
   <div class="dataset-layout"><figure><button class="figure-button" data-enlarge="assets/paper/data_framework.svg" data-caption="OmniHuMo data construction pipeline · Paper Figure 2" aria-label="Enlarge OmniHuMo data pipeline"><img src="assets/paper/data_framework.svg" width="810" height="729" alt="OmniHuMo data construction pipeline from web video curation to 2D and 3D human annotation, audio annotation, and motion captions." loading="lazy"><span class="expand-hint">↗ Expand</span></button><figcaption>Automatic data construction pipeline · Figure 2</figcaption></figure>
   <div class="dataset-copy"><h3>From videos to<br>multimodal motion.</h3><p>OmniHuMo turns diverse online videos into a corpus of <strong>3.2 million human motion sequences</strong>, spanning 5,048 hours of movement.</p><p>Every sequence is paired with <strong>1–3 text captions</strong>. An approximately 500-hour subset also includes temporally aligned speech or music, enabling learning across semantics, rhythm, and motion.</p><a class="inline-link" data-link="dataset" href="https://huggingface.co/datasets/L-yiheng/OmniHuMo" target="_blank" rel="noopener">Explore OmniHuMo on Hugging Face ↗</a></div></div>
-      <div class="dataset-stats" data-dataset-stats>
-        <div class="ds-heading">
-          <h3 id="dataset-scale-heading">Motion data at scale</h3>
-          <div class="ds-controls" data-stats-controls role="group" aria-label="Dataset comparison metric" hidden>
-            <button type="button" data-stats-metric="duration" aria-pressed="true" aria-controls="dataset-scale-table">Duration</button>
-            <button type="button" data-stats-metric="sequences" aria-pressed="false" aria-controls="dataset-scale-table">Sequences</button>
-          </div>
-        </div>
-        <p class="ds-description">Explore how OmniHuMo compares with six motion datasets in the AnyMo paper.</p>
-        <figure class="ds-chart" aria-labelledby="dataset-scale-heading" aria-describedby="dataset-scale-source">
-          <table class="ds-table" id="dataset-scale-table">
-            <caption class="ds-visually-hidden">Dataset size comparison. Bars use a linear scale starting at zero.</caption>
-            <thead><tr><th scope="col">Dataset</th><th scope="col" data-stats-heading>Duration (hours)</th></tr></thead>
-            <tbody>
-              <tr data-stats-row data-duration="60" data-sequences="1800">
-                <th scope="row">BEATv2</th>
-                <td><div class="ds-bar-cell"><span class="ds-track" aria-hidden="true"><span class="ds-bar" data-stats-bar style="width:1.18859%"></span></span><span class="ds-value" data-stats-value>60</span></div></td>
-              </tr>
-              <tr data-stats-row data-duration="28.6" data-sequences="14600">
-                <th scope="row">HumanML3D</th>
-                <td><div class="ds-bar-cell"><span class="ds-track" aria-hidden="true"><span class="ds-bar" data-stats-bar style="width:0.56656%"></span></span><span class="ds-value" data-stats-value>28.6</span></div></td>
-              </tr>
-              <tr data-stats-row data-duration="100.3" data-sequences="41000">
-                <th scope="row">OpenDanceSet</th>
-                <td><div class="ds-bar-cell"><span class="ds-track" aria-hidden="true"><span class="ds-bar" data-stats-bar style="width:1.98693%"></span></span><span class="ds-value" data-stats-value>100.3</span></div></td>
-              </tr>
-              <tr data-stats-row data-duration="181" data-sequences="120000">
-                <th scope="row">Motion-X++</th>
-                <td><div class="ds-bar-cell"><span class="ds-track" aria-hidden="true"><span class="ds-bar" data-stats-bar style="width:3.58558%"></span></span><span class="ds-value" data-stats-value>181</span></div></td>
-              </tr>
-              <tr data-stats-row data-duration="596" data-sequences="400000">
-                <th scope="row">MotionHub</th>
-                <td><div class="ds-bar-cell"><span class="ds-track" aria-hidden="true"><span class="ds-bar" data-stats-bar style="width:11.80666%"></span></span><span class="ds-value" data-stats-value>596</span></div></td>
-              </tr>
-              <tr data-stats-row data-duration="2000" data-sequences="2000000">
-                <th scope="row">MotionMillion</th>
-                <td><div class="ds-bar-cell"><span class="ds-track" aria-hidden="true"><span class="ds-bar" data-stats-bar style="width:39.61965%"></span></span><span class="ds-value" data-stats-value>2,000</span></div></td>
-              </tr>
-              <tr class="ds-featured" data-stats-row data-duration="5048" data-sequences="3200000">
-                <th scope="row">OmniHuMo <span class="ds-ours">Ours</span></th>
-                <td><div class="ds-bar-cell"><span class="ds-track" aria-hidden="true"><span class="ds-bar" data-stats-bar style="width:100%"></span></span><span class="ds-value" data-stats-value>5,048</span></div></td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="ds-scale" data-stats-scale>Linear scale · 0–5,048 hours</p>
-          <figcaption class="ds-source" id="dataset-scale-source">Source: <a href="https://arxiv.org/html/2605.29488v1" target="_blank" rel="noopener">AnyMo paper, Table 1</a>. Cross-dataset values are paper-reported; sequence counts are rounded as in the paper.</figcaption>
-        </figure>
-        <p class="ds-visually-hidden" data-stats-status role="status" aria-live="polite"></p>
-      </div>
 
 </div></section>
 <section class="section reading-wrap citation-section" id="citation"><div class="citation-heading"><h2>BibTeX</h2><button id="copy-bibtex" class="copy-button">Copy BibTeX</button></div><pre><code id="bibtex-code">@misc{li2026anymoscalinganymodalityconditional,

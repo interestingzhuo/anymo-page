@@ -16,30 +16,26 @@ The website includes the paper teaser, abstract, generation gallery, OmniHuMo da
 
 ## OmniHuMo interactive visualizations
 
-The dataset section now includes a dependency-free 3D skeleton viewer and an
-interactive dataset-size chart. All assets are local; the page still works as
+The dataset section now includes a dependency-free 3D skeleton viewer with a
+visual sample browser. All assets are local; the page still works as
 static HTML with no build step, install, CDN, or model download.
 
 - `motion-viewer.js` / `motion-viewer.css`: play/pause, frame scrubbing, playback
   speed, pointer and keyboard orbit, front/side/top views, root path, and pose trails.
+  A responsive thumbnail grid makes all 16 samples directly selectable.
   Starts paused; animation is suspended off-screen and in hidden tabs.
-- `assets/data/omnihumo-samples.js`: three real OmniHuMo records, sampled from
+- `assets/data/omnihumo-samples.js`: 16 real OmniHuMo records, sampled from
   30 to 15 FPS. Their original joint rotations and root translations are rendered
   using **approximate canonical skeleton proportions**, without subject shape
   coefficients or an SMPL body mesh. These are dataset observations, not AnyMo
   generations. Recorded captions, source-member hashes, pinned release revision,
   and processing details accompany the data. See [attribution and adaptations](assets/data/NOTICE.md).
-- `dataset-stats.js` / `dataset-stats.css`: switch between hours and sequence
-  counts for all seven datasets in [AnyMo Table 1](https://arxiv.org/html/2605.29488v1).
-  Bar lengths use a shared linear scale starting at zero; the static hours chart
-  remains readable without JavaScript. Values are paper-reported, not an inventory
-  of the current Hugging Face release.
 
 ### Reproduce the sample bundle
 
 Python with NumPy is needed only to regenerate sample assets. The exporter reads
 exactly the first 4 MiB of the pinned archive with HTTP Range, checks its SHA256,
-reads only three small numeric records through a restricted reader, and exports
+reads only selected small numeric records through a restricted reader, and exports
 22-joint forward kinematics. It does not download the full dataset or SMPL weights.
 
 ```sh
@@ -47,7 +43,7 @@ python3 scripts/export_omnihumo_samples.py --download --prefix /tmp/omnihumo-pre
 ```
 
 The derived sample data remains under **CC BY-NC-SA 4.0**. Captions can mention
-objects that are absent from a skeleton-only preview. These three archive records
+objects that are absent from a skeleton-only preview. These archive records
 are illustrative and do not represent the dataset's action distribution.
 
 ### Local verification
@@ -58,5 +54,5 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 Open `http://127.0.0.1:8765/#dataset`. Verify each sample, play/pause and seek,
 camera presets and arrow keys, speed selection, root path/trails, and the
-Duration/Sequences switch. Also check the existing generation tabs and figure
+visual sample browser. Also check the existing generation tabs and figure
 expansion. New controls include visible focus styles and accessible labels.

@@ -35,6 +35,7 @@
   const trails = find("trails");
   const readout = find("readout");
   const views = Array.from(root.querySelectorAll("[data-motion-view]"));
+  const sampleButtons = [];
   let sample, frameIndex = 0, requestedPlay = false, inView = true, raf = 0, previousTime = null;
   let accumulated = 0, width = 0, height = 0, center = [0, 0, 0], radius = 1, floor = 0;
   const defaultView = { yaw: -0.55, pitch: 0.24 };
@@ -103,6 +104,73 @@
     if (name.startsWith("left") || /^l[_-]/.test(name)) return "#397bb8";
     if (name.startsWith("right") || /^r[_-]/.test(name)) return "#df9460";
     return "#4c6175";
+  }
+
+  // Each thumbnail is one actual midpoint frame, independently fitted for legibility.
+  // Thumbnails are rendered once and never run their own animation loop.
+  function drawThumbnail(thumbnail, item) {
+    const context = thumbnail.getContext("2d");
+    if (!context) return;
+    const w = 90, h = 104, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    thumbnail.width = Math.round(w * dpr); thumbnail.height = Math.round(h * dpr);
+    context.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const frame = item.frames[Math.floor((item.frames.length - 1) / 2)];
+    const rotated = frame.map(([x, y, z]) => {
+      const dx = Math.cos(defaultView.yaw) * x + Math.sin(defaultView.yaw) * z;
+      const dz = -Math.sin(defaultView.yaw) * x + Math.cos(defaultView.yaw) * z;
+      return [dx, Math.cos(defaultView.pitch) * y - Math.sin(defaultView.pitch) * dz,
+        Math.sin(defaultView.pitch) * y + Math.cos(defaultView.pitch) * dz];
+    });
+    const minX = Math.min(...rotated.map(p => p[0])), maxX = Math.max(...rotated.map(p => p[0]));
+    const minY = Math.min(...rotated.map(p => p[1])), maxY = Math.max(...rotated.map(p => p[1]));
+    const scale = Math.min((w - 22) / Math.max(maxX - minX, 0.3), (h - 24) / Math.max(maxY - minY, 0.3));
+    const points = rotated.map(([x, y, z]) => [w / 2 + (x - (minX + maxX) / 2) * scale,
+      h / 2 - (y - (minY + maxY) / 2) * scale, z]);
+    context.lineCap = "round"; context.lineJoin = "round";
+    [...bones].sort((a, b) => (points[a[0]][2] + points[a[1]][2]) - (points[b[0]][2] + points[b[1]][2]))
+      .forEach(([a, b]) => {
+        context.beginPath(); context.moveTo(points[a][0], points[a][1]); context.lineTo(points[b][0], points[b][1]);
+        context.strokeStyle = jointColor(b); context.lineWidth = 2.3; context.stroke();
+      });
+    points.forEach((point, index) => {
+      context.beginPath(); context.arc(point[0], point[1], 1.8, 0, Math.PI * 2);
+      context.fillStyle = jointColor(index); context.fill();
+    });
+  }
+
+  function buildSampleBrowser() {
+    const browser = document.createElement("div"); browser.className = "motion-browser";
+    const heading = document.createElement("div"); heading.className = "motion-browser-heading";
+    const title = document.createElement("h4"); title.id = "motion-browser-heading";
+    title.textContent = "Browse motion samples";
+    const count = document.createElement("span"); count.textContent = `${samples.length} recordings`;
+    heading.append(title, count);
+    const hint = document.createElement("p"); hint.className = "motion-browser-hint";
+    hint.textContent = "Mid-sequence poses from the dataset. Select a sample to explore its full motion above.";
+    const grid = document.createElement("div"); grid.className = "motion-sample-grid";
+    grid.setAttribute("role", "group"); grid.setAttribute("aria-labelledby", title.id);
+    samples.forEach((item, index) => {
+      const label = item.label || item.title || `Sample ${index + 1}`;
+      const button = document.createElement("button"); button.type = "button"; button.className = "motion-sample-card";
+      button.setAttribute("aria-pressed", "false");
+      button.setAttribute("aria-label", `View sample ${index + 1}: ${label}`);
+      const thumbnail = document.createElement("canvas"); thumbnail.className = "motion-sample-thumbnail";
+      thumbnail.setAttribute("aria-hidden", "true");
+      const copy = document.createElement("span"); copy.className = "motion-sample-copy";
+      const number = document.createElement("span"); number.className = "motion-sample-index";
+      number.textContent = `SAMPLE ${String(index + 1).padStart(2, "0")}`;
+      const name = document.createElement("span"); name.className = "motion-sample-name"; name.textContent = label;
+      const duration = document.createElement("span"); duration.className = "motion-sample-span";
+      duration.textContent = `${formatTime((item.frames.length - 1) / item.fps)} preview`;
+      copy.append(number, name, duration); button.append(thumbnail, copy); grid.appendChild(button);
+      button.addEventListener("click", () => {
+        chooseSample(index);
+        root.scrollIntoView({ behavior: reducedMotion.matches ? "auto" : "smooth", block: "start" });
+      });
+      sampleButtons.push(button);
+      drawThumbnail(thumbnail, item);
+    });
+    browser.append(heading, hint, grid); root.appendChild(browser);
   }
 
   function drawPose(frame, opacity) {
@@ -185,6 +253,8 @@
   function chooseSample(index) {
     requestedPlay = false; accumulated = 0; previousTime = null;
     sample = samples[index]; frameIndex = 0;
+    select.value = String(index);
+    sampleButtons.forEach((button, buttonIndex) => button.setAttribute("aria-pressed", String(buttonIndex === index)));
     scrub.max = String(sample.frames.length - 1);
     find("caption").textContent = sample.caption || "No text annotation is included with this sample.";
     find("id").textContent = sample.id;
@@ -193,6 +263,7 @@
     find("joints").textContent = `${jointNames.length} body joints`;
     find("sample-number").textContent = `${String(index + 1).padStart(2, "0")} / ${String(samples.length).padStart(2, "0")}`;
     fitSample(); updateFrame(); syncAnimation();
+    status.textContent = `${sample.title || sample.label || `Sample ${index + 1}`} selected · paused`;
   }
 
   function setView(name) {
@@ -257,5 +328,5 @@
   reducedMotion.addEventListener?.("change", event => {
     if (event.matches) { requestedPlay = false; syncAnimation(); }
   });
-  chooseSample(0); resize();
+  buildSampleBrowser(); chooseSample(0); resize();
 })();

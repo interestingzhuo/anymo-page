@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export three real OmniHuMo recordings onto an approximate canonical skeleton.
+"""Export sixteen real OmniHuMo recordings onto an approximate canonical skeleton.
 
 Requires only NumPy. No SMPL model weights are downloaded or distributed.
 The source uses joblib's numeric-array format. This reader accepts only its
@@ -62,6 +62,32 @@ SELECTIONS = [
      "bend-and-gesture", "Bend & gesture"),
     ("78fae82e3a29f5798967fa143e4c86c0_subtitle_cropped_cropped_scene_0_0", 0,
      "walk-and-sit", "Walk & sit"),
+    ("128f3c1c3fcc1a7c56d2b785b9a08ddc-Scene-003_scene_0_0", 0,
+     "side-step-dance", "Side-step dance"),
+    ("8cb89f2126b92292fca3d26eaace298c_subtitle_cropped_cropped_scene_0_0", 0,
+     "step-and-turn-dance", "Step & turn dance"),
+    ("6bc2a8a14d15701207a49fbaaaca1a61-Scene-009_scene_0_0", 0,
+     "arm-choreography", "Arm choreography"),
+    ("c992ed6f9661a7ae16afc3ecad36f394-Scene-185_scene_0_0", 0,
+     "martial-arts-stance", "Martial arts stance"),
+    ("621de98797b75153b2a222db9158de77-Scene-023_scene_0_0", 0,
+     "seated-gestures", "Seated gestures"),
+    ("0097904404bb8125132cf9ace0f587f5-Scene-069_scene_0_0", 1,
+     "point-and-gesture", "Point & gesture"),
+    ("a5828bba8f5b2db130cf09306be8dded_cropped_scene_0_0", 0,
+     "rise-and-walk", "Rise & walk"),
+    ("96f1d3756deae1e727da9ce4f8f83ce5_part_0004-Scene-010_subtitle_cropped_cropped_scene_0_0", 1,
+     "walk-downstairs", "Walk downstairs"),
+    ("fc791a1885a32fa20a85c7bba8d224a3_subtitle_cropped_scene_0_0", 0,
+     "walk-and-wave", "Walk & wave"),
+    ("84f8b821c2f1700d7b235068e408e7f3_scene_0_0", 0,
+     "seated-flute-pose", "Seated flute pose"),
+    ("ac0617d53282b9913ca1658052e1203c-Scene-006_cropped_scene_0_0", 0,
+     "riding-posture", "Riding posture"),
+    ("27f2ba9988e44a3ae64f890a4f1a6069_part_0001-Scene-012_subtitle_cropped_cropped_scene_0_0", 0,
+     "handshake", "Handshake"),
+    ("282fed0b3da6695639d20178fc64aa26_part_0002-Scene-057_subtitle_cropped_scene_0_0", 0,
+     "seated-reach", "Seated reach"),
 ]
 
 
@@ -264,7 +290,8 @@ def make_bundle(prefix):
             "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
             "note": "Recorded joint rotations and root translations, visualized with approximate canonical skeleton proportions. Subject shape coefficients are not applied; this is not an exact SMPL mesh reconstruction.",
             "processing": "Rodrigues axis-angle (radians), 22-joint forward kinematics; one constant floor/origin translation per clip; 30 fps downsampled to 15 fps; coordinates rounded to 4 decimal places.",
-            "selection": "Three illustrative recordings from the start of the first archive; not a random or representative dataset sample.",
+            "selectionCount": len(samples),
+            "selection": "Sixteen illustrative recordings from the start of the first archive, selected for varied annotated actions; not a random or representative dataset sample. Only the selected person's skeleton is rendered; objects, other people, animals and audio mentioned in captions are not included.",
             "coordinateSystem": "Y-up; X/Z ground plane; no per-frame recentering or orientation changes",
         },
         "jointNames": JOINT_NAMES,

@@ -14,9 +14,10 @@ The preview does not contain source video, audio, or a licensed SMPL model.
 Preview processing uses forward kinematics, frame subsampling, rounding, and a
 constant translation to place each clip near the stage origin. The exact source
 archive, member paths, sample metadata, and transformations are recorded in the
-bundle's `provenance` and sample records. The first few complete archive records
-were selected for a lightweight example; they are not a representative sample
-of the dataset's action distribution.
+bundle's `provenance` and sample records. Sixteen complete records near the start
+of the archive were selected for varied annotated actions; they are not a
+representative sample of the dataset's action distribution. Objects, other
+participants, animals, and audio mentioned in captions are not rendered.
 
 Source paper: [AnyMo: Scaling Any-Modality Conditional Motion Generation with
 Masked Modeling](https://arxiv.org/abs/2605.29488), Yiheng Li, Zhuo Li, Ruibing Hou,
