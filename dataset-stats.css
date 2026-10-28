@@ -1,0 +1,47 @@
+.dataset-stats{margin-top:48px;padding-top:35px;border-top:1px solid var(--line,#e9e9e9)}
+.ds-heading{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:9px}
+.ds-heading h3{font-size:23px;letter-spacing:-.45px}
+.ds-description{font-size:14px;color:#6c6c6c;line-height:1.7;margin:0 0 25px}
+.ds-controls{display:flex;flex-shrink:0;gap:4px;border:1px solid #dde5ed;border-radius:7px;padding:4px;background:#fff}
+.ds-controls button{border:0;border-radius:4px;padding:7px 13px;background:transparent;color:#666;font-size:13px;line-height:1.5}
+.ds-controls button:hover{background:#f2f5f8}
+.ds-controls button[aria-pressed=true]{color:#255d90;background:#e8f0f8;font-weight:600}
+.ds-chart{margin:0;background:#fff;border:1px solid #e4e8ed;border-radius:9px;padding:20px 25px 17px}
+.ds-table{border-collapse:collapse;table-layout:fixed;width:100%;font-size:14px;text-align:left}
+.ds-table th,.ds-table td{padding:10px 0;vertical-align:middle;border-bottom:1px solid #f0f1f3}
+.ds-table thead th{padding-top:0;padding-bottom:12px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#767c83;font-weight:600}
+.ds-table thead th:first-child{width:157px}
+.ds-table thead th:last-child{text-align:right}
+.ds-table tbody th{font-weight:500;padding-right:14px;color:#555}
+.ds-table tbody tr:last-child th,.ds-table tbody tr:last-child td{border-bottom:0}
+.ds-bar-cell{display:grid;grid-template-columns:minmax(0,1fr) 91px;align-items:center;gap:18px}
+.ds-track{height:13px;background:#f3f5f7;overflow:hidden;border-radius:2px}
+.ds-bar{display:block;height:100%;background:#bccbd9;border-radius:2px;transition:width .25s ease}
+.ds-value{font-variant-numeric:tabular-nums;text-align:right;color:#555;font-size:14px}
+.ds-table .ds-featured th{color:#265e8f;font-weight:650}
+.ds-featured .ds-bar{background:#3977af}
+.ds-featured .ds-value{color:#265e8f;font-weight:650}
+.ds-ours{display:inline-block;margin-left:5px;font-size:10px;font-weight:500;vertical-align:1px;color:#5d7a96}
+.ds-scale{margin-top:12px;font-size:11px;color:#7b8187;text-align:right}
+.ds-source{margin:15px 0 0!important;text-align:left!important;font-size:12px!important;line-height:1.8!important;color:#777!important}
+.ds-source a{color:#3b79a9}
+.ds-visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:650px){
+  .dataset-stats{margin-top:34px;padding-top:28px}
+  .ds-heading{align-items:flex-start;flex-direction:column;gap:13px;margin-bottom:15px}
+  .ds-heading h3{font-size:21px}
+  .ds-description{font-size:13px;margin-bottom:19px}
+  .ds-controls button{padding:7px 14px;font-size:12px}
+  .ds-chart{padding:17px 13px 14px}
+  .ds-table{font-size:12px}
+  .ds-table thead th{font-size:10px;letter-spacing:.025em}
+  .ds-table thead th:first-child{width:111px}
+  .ds-table tbody th{padding-right:8px}
+  .ds-bar-cell{grid-template-columns:minmax(0,1fr) 68px;gap:9px}
+  .ds-value{font-size:11px}
+  .ds-track{height:11px}
+  .ds-ours{display:block;font-size:9px;margin:0;line-height:1.2}
+  .ds-scale{font-size:10px}
+  .ds-source{font-size:11px!important}
+}
+@media(prefers-reduced-motion:reduce){.ds-bar{transition:none}}
